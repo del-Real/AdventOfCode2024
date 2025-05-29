@@ -6,6 +6,7 @@ using aoc24.Solutions.Day02;
 using aoc24.Solutions.Day03;
 using aoc24.Solutions.Day04;
 using aoc24.Solutions.Day05;
+using aoc24.Solutions.Day06;
 
 class Program
 {
@@ -31,5 +32,9 @@ class Program
         // Day 05
         IDay day05 = new Day05();
         Console.WriteLine("Day 05\n - Part 1: " + day05.Part1() + "\n - Part 2: " + day05.Part2());
+        
+        // Day 06
+        IDay day06 = new Day06();
+        Console.WriteLine("Day 06\n - Part 1: " + day06.Part1() + "\n - Part 2: " + day06.Part2());
     }
 }
