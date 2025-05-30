@@ -5,7 +5,7 @@ public class Day06 : IDay
     public int Part1()
     {
         string inputPath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Solutions", "Day06",
-            "day06_test.txt");
+            "day06_input.txt");
         int result = 0;
 
         using (StreamReader sr = new StreamReader(inputPath))
@@ -42,10 +42,12 @@ public class Day06 : IDay
                 {
                     while (guard.Item1 - 1 >= 0 && mtx[guard.Item1 - 1, guard.Item2] != '#')
                     {
-                        if (mtx[guard.Item1, guard.Item2] != 'X')
+                        mtx[guard.Item1, guard.Item2] = 'X';
+                        result++;
+
+                        if (mtx[guard.Item1 - 1, guard.Item2] == 'X')
                         {
-                            mtx[guard.Item1, guard.Item2] = 'X';
-                            result++;
+                            result--;
                         }
 
                         mtx[guard.Item1 - 1, guard.Item2] = '^';
@@ -61,10 +63,12 @@ public class Day06 : IDay
                 {
                     while (guard.Item2 + 1 < mtx.GetLength(1) && mtx[guard.Item1, guard.Item2 + 1] != '#')
                     {
-                        if (mtx[guard.Item1, guard.Item2] != 'X')
+                        mtx[guard.Item1, guard.Item2] = 'X';
+                        result++;
+
+                        if (mtx[guard.Item1, guard.Item2 + 1] == 'X')
                         {
-                            mtx[guard.Item1, guard.Item2] = 'X';
-                            result++;
+                            result--;
                         }
 
                         mtx[guard.Item1, guard.Item2 + 1] = '>';
@@ -80,10 +84,12 @@ public class Day06 : IDay
                 {
                     while (guard.Item1 + 1 < mtx.GetLength(0) && mtx[guard.Item1 + 1, guard.Item2] != '#')
                     {
-                        if (mtx[guard.Item1, guard.Item2] != 'X')
+                        mtx[guard.Item1, guard.Item2] = 'X';
+                        result++;
+
+                        if (mtx[guard.Item1 + 1, guard.Item2] == 'X')
                         {
-                            mtx[guard.Item1, guard.Item2] = 'X';
-                            result++;
+                            result--;
                         }
 
                         mtx[guard.Item1 + 1, guard.Item2] = 'v';
@@ -99,10 +105,12 @@ public class Day06 : IDay
                 {
                     while (guard.Item2 - 1 >= 0 && mtx[guard.Item1, guard.Item2 - 1] != '#')
                     {
-                        if (mtx[guard.Item1, guard.Item2] != 'X')
+                        mtx[guard.Item1, guard.Item2] = 'X';
+                        result++;
+
+                        if (mtx[guard.Item1, guard.Item2 - 1] == 'X')
                         {
-                            mtx[guard.Item1, guard.Item2] = 'X';
-                            result++;
+                            result--;
                         }
 
                         mtx[guard.Item1, guard.Item2 - 1] = '<';
@@ -112,10 +120,10 @@ public class Day06 : IDay
                     mtx[guard.Item1, guard.Item2] = '^';
                     guard.Item3 = '^';
                 }
-
-                Console.WriteLine(result);
             }
 
+            mtx[guard.Item1, guard.Item2] = 'X';
+            result++;
             printMtx(mtx);
         }
 
